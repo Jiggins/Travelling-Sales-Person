@@ -39,4 +39,5 @@ searchTowns vector point = V.find (\x -> point == coords x) vector
 main :: IO ()
 main = do
     townList <- readTownsVector "Towns.csv" {->>= distanceMatrix-}
-    print . intercalate "." . map (show . fromJust . fmap townId) . map (searchTowns townList) . convexHull . V.toList . fmap coords $ townList
+    print . intercalate "." . map (show . fromJust . fmap townId) 
+        . map (searchTowns townList) . convexHull . V.toList . fmap coords $ townList
